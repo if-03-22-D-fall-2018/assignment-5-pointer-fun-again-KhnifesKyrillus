@@ -34,10 +34,10 @@ void print_struct(struct PlayStruct ps, struct PlayStruct* pps)
 
 void change_struct(struct PlayStruct ps, struct PlayStruct* pps)
 {
-  pps->int_value=7;
-  pps->double_value=12312.321;
-  strcpy(pps->a_string, "bye");
   ps.int_value=14;
   ps.double_value=17.10312;
   strcpy(ps.a_string, "grüzzi");
+  pps->int_value=7;
+  pps->double_value=12312.321;
+  strcpy(pps->a_string, "bye");
 }
