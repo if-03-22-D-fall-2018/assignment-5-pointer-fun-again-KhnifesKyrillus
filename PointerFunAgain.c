@@ -8,6 +8,7 @@ struct PlayStruct
   char a_string[64];
 };
 void print_struct(struct PlayStruct ps, struct PlayStruct* pps);
+void change_struct(struct PlayStruct ps, struct PlayStruct* pps);
 
 int main(int argc, char const *argv[])
 {
@@ -21,10 +22,22 @@ int main(int argc, char const *argv[])
   printf("\n");
   struct PlayStruct* play_struct_pointer=&play_struct;
   print_struct(play_struct,play_struct_pointer);
+  change_struct(play_struct,play_struct_pointer);
+  print_struct(play_struct,play_struct_pointer);
   return 0;
 }
 void print_struct(struct PlayStruct ps, struct PlayStruct* pps)
 {
-  printf("ps:\nString: %s\nDouble: %f\nInt: %d\n",ps.a_string,ps.double_value,ps.int_value );
-  printf("\npps:\nString: %s\nDouble: %.3lf\nInt: %d\n",pps->a_string,pps->double_value,pps->int_value);
+  printf("\nps:\nString: %s\nDouble: %f\nInt: %d\n",ps.a_string,ps.double_value,ps.int_value );
+  printf("pps:\nString: %s\nDouble: %.3lf\nInt: %d\n",pps->a_string,pps->double_value,pps->int_value);
+}
+
+void change_struct(struct PlayStruct ps, struct PlayStruct* pps)
+{
+  pps->int_value=7;
+  pps->double_value=12312.321;
+  strcpy(pps->a_string, "bye");
+  ps.int_value=14;
+  ps.double_value=17.10312;
+  strcpy(ps.a_string, "grüzzi");
 }
