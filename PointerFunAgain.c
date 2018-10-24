@@ -24,6 +24,7 @@ int main(int argc, char const *argv[])
   print_struct(play_struct,play_struct_pointer);
   change_struct(play_struct,play_struct_pointer);
   print_struct(play_struct,play_struct_pointer);
+  /*If you change the pointer of the struct you change the struct because the pointer is just the waywiser to the variable behind the pointer*/
   return 0;
 }
 void print_struct(struct PlayStruct ps, struct PlayStruct* pps)
