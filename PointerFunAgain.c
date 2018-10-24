@@ -9,6 +9,8 @@ struct PlayStruct
 };
 void print_struct(struct PlayStruct ps, struct PlayStruct* pps);
 void change_struct(struct PlayStruct ps, struct PlayStruct* pps);
+void print_string(char string_to_print[]);
+void change_string(char string1[], char *p_string[]);
 
 int main(int argc, char const *argv[])
 {
@@ -25,6 +27,14 @@ int main(int argc, char const *argv[])
   change_struct(play_struct,play_struct_pointer);
   print_struct(play_struct,play_struct_pointer);
   /*If you change the pointer of the struct you change the struct because the pointer is just the waywiser to the variable behind the pointer*/
+  char other_string[16]="GCC";
+  char* other_string_p=other_string;
+  print_string(play_struct.a_string);
+  change_string(play_struct.a_string, &other_string_p);
+  print_string(play_struct.a_string);
+  print_string(other_string_p);
+  /*It just print the first two characters of play_struct.a_string because I replace the third index with \0 (\0 defines the end of a string)*/
+  /*other_string_p prints completlely because its a Pointer and we just change the adress to the array*/
   return 0;
 }
 void print_struct(struct PlayStruct ps, struct PlayStruct* pps)
@@ -41,4 +51,15 @@ void change_struct(struct PlayStruct ps, struct PlayStruct* pps)
   pps->int_value=7;
   pps->double_value=12312.321;
   strcpy(pps->a_string, "bye");
+}
+
+void print_string(char string_to_print[])
+{
+  printf("%s\n",string_to_print );
+}
+
+void change_string(char string1[], char *p_string[])
+{
+  strcpy(&string1[2],"\0");
+  strcpy(p_string[1],"\0");
 }
